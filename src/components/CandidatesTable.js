@@ -39,7 +39,12 @@ const lorem = new LoremIpsum({
 const candidateList = [];
 for (let i = 0; i < 5; i++) {
   candidateList.push({
-    name: lorem.generateWords(1)
+    name: faker.name.findName(),
+    country: faker.address.country(),
+    skills: lorem.generateWords(5),
+    experience: lorem.generateWords(2),
+    englishProficiency: lorem.generateWords(1),
+    bookNow: "Book Now+"
   });
 }
 const CandidatesTable = () => {
@@ -52,7 +57,13 @@ const CandidatesTable = () => {
           ))}
         </TableRow>
       </TableHead>
-      <TableBody>t</TableBody>
+      <TableBody>
+        {candidateList.map((can, index) => (
+          <TableRow>
+            <TableCell>{can.name}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
     </Table>
   );
 };
